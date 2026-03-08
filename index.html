@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Selamat Hari Wanita</title>
+
+<style>
+
+body{
+margin:0;
+font-family:"Comic Sans MS", Arial;
+text-align:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+color:white;
+overflow-x:hidden;
+}
+
+/* layar pembuka */
+
+#opening{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#ff6f91;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+animation:hilang 2s forwards;
+animation-delay:3s;
+}
+
+#opening h1{
+font-size:50px;
+animation:zoom 1.5s infinite alternate;
+}
+
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.2);}
+}
+
+@keyframes hilang{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+.container{
+padding:50px;
+}
+
+h1{
+font-size:45px;
+}
+
+p{
+font-size:20px;
+}
+
+.galeri{
+display:flex;
+justify-content:center;
+gap:20px;
+margin:30px;
+}
+
+.galeri img{
+width:200px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.3);
+transition:transform 0.4s;
+}
+
+.galeri img:hover{
+transform:scale(1.1) rotate(3deg);
+}
+
+/* tombol lucu */
+
+button{
+padding:12px 25px;
+font-size:18px;
+background:white;
+color:#ff4d6d;
+border:none;
+border-radius:30px;
+cursor:pointer;
+animation:lompat 2s infinite;
+}
+
+@keyframes lompat{
+0%{transform:translateY(0);}
+50%{transform:translateY(-5px);}
+100%{transform:translateY(0);}
+}
+
+button:hover{
+background:#ff4d6d;
+color:white;
+}
+
+#pesan{
+margin-top:25px;
+font-size:22px;
+font-weight:bold;
+opacity:0;
+}
+
+/* animasi pesan */
+
+.muncul{
+animation:munculPesan 1s forwards;
+}
+
+@keyframes munculPesan{
+0%{
+opacity:0;
+transform:scale(0.5);
+}
+60%{
+transform:scale(1.2);
+}
+100%{
+opacity:1;
+transform:scale(1);
+}
+}
+
+/* animasi hati jatuh */
+
+.heart{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:jatuh linear;
+}
+
+@keyframes jatuh{
+to{
+transform:translateY(100vh);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="opening">
+<h1>🌸 Selamat Hari Wanita 🌸</h1>
+<p>Loading pesan spesial...</p>
+</div>
+
+<div class="container">
+
+<h1>Selamat Hari Wanita 🌸</h1>
+
+<div class="galeri">
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+</div>
+
+<p>Selamat Hari Wanita.</p>
+
+<p>Terima kasih sudah menjadi perempuan yang kuat dan baik.</p>
+
+<button onclick="tampilPesan()">Klik Pesan Lucu 😆</button>
+
+<div id="pesan"></div>
+
+</div>
+
+<script>
+
+function tampilPesan(){
+
+let pesan=document.getElementById("pesan");
+
+pesan.innerHTML="Semoga harimu menyenangkan 🌸 Jangan lupa ngising hari ini 😆";
+
+pesan.classList.add("muncul");
+
+}
+
+/* animasi hati */
+
+function buatHati(){
+
+const hati=document.createElement("div");
+
+hati.classList.add("heart");
+
+hati.innerHTML="❤️";
+
+hati.style.left=Math.random()*100+"vw";
+
+hati.style.animationDuration=(Math.random()*3+2)+"s";
+
+document.body.appendChild(hati);
+
+setTimeout(()=>{
+hati.remove();
+},5000);
+
+}
+
+setInterval(buatHati,400);
+
+</script>
+
+</body>
+</html>
